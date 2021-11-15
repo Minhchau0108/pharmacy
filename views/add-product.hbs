@@ -1,0 +1,110 @@
+<div class="wrapper">
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>ADMIN</h3>
+      <hr />
+    </div>
+    <ul class="list-unstyled components">
+      <p>MENUS</p>
+      <li class="active_link"> <a href="/admin">Quản lý thuốc</a></li>
+      <li> <a href="/admin/orders">Quản lý đơn hàng</a></li>
+      <li> <a href="/admin/users/">Quản lý người dùng</a></li>
+    </ul>
+    <ul class="list-unstyled CTAs">
+      <li> <a href="/logout" class="download">Logout</a> </li>
+    </ul>
+  </nav>
+  <div class="content" id="content">
+    <div class="content-wrapper">
+      <h1>Quản lý thuốc</h1>
+      <h2 class="h5 text-uppercase mb-4">Thêm thuốc mới</h2>
+
+      <div class="row">
+        <div class="col-lg-10">
+          <form action="/admin/add-product" method="post">
+            <div class="row">
+              <div class="col-lg-12 form-group">
+                <label class="text-small text-uppercase" for="name">Tên thuốc</label>
+                <input
+                  class="form-control form-control-lg"
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Enter name"
+                />
+              </div>
+              <div class="col-lg-12 form-group">
+                <label class="text-small text-uppercase" for="ingredient">Tên
+                  hoạt chất</label>
+                <input
+                  class="form-control form-control-lg"
+                  id="ingredient"
+                  name="ingredient"
+                  type="text"
+                  placeholder="Enter ingredient"
+                />
+              </div>
+              <div class="col-lg-12 form-group">
+                <label class="text-small text-uppercase" for="imagepath">Hình
+                  ảnh</label>
+                <input
+                  class="form-control form-control-lg"
+                  id="imagepath"
+                  name="imagepath"
+                  type="text"
+                  placeholder="https://image.com/abc"
+                />
+              </div>
+              <div class="col-lg-12 form-group">
+                <label
+                  class="text-small text-uppercase"
+                  for="description"
+                >Description</label>
+                <input
+                  class="form-control form-control-lg"
+                  id="description"
+                  name="description"
+                  type="text"
+                  placeholder="Enter description"
+                />
+              </div>
+              <div class="col-lg-12 form-group">
+                <label class="text-small text-uppercase" for="company">Price
+                  (VND)</label>
+                <input
+                  class="form-control form-control-lg"
+                  id="price"
+                  name="price"
+                  type="text"
+                  placeholder="Enter price"
+                />
+              </div>
+              <div class="col-lg-12 form-group">
+                <label
+                  class="text-small text-uppercase"
+                  for="category"
+                >Nhóm thuốc</label>
+                <select
+                  class="selectpicker country"
+                  id="category"
+                  name="category"
+                  data-width="fit"
+                  data-style="form-control form-control-lg"
+                  data-title="Chọn nhóm thuốc"
+                >
+                {{#each categories}}
+                <option value="{{id}}">{{name}}</option>
+                {{/each}}
+                </select>
+              </div>
+
+              <div class="col-lg-12 form-group mt-3">
+                <input class="btn btn-dark" type="submit" value="Submit"></input>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

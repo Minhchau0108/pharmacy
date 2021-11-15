@@ -1,0 +1,102 @@
+<div class="wrapper">
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>ADMIN</h3>
+      <hr />
+    </div>
+    <ul class="list-unstyled components">
+      <p>MENUS</p>
+      <li class="active_link"> <a href="/admin">Quản lý thuốc</a></li>
+      <li> <a href="/admin/orders">Quản lý đơn hàng</a></li>
+      <li> <a href="/admin/users/">Quản lý người dùng</a></li>
+    </ul>
+    <ul class="list-unstyled CTAs">
+      <li> <a href="/logout" class="download">Logout</a> </li>
+    </ul>
+  </nav>
+  <div class="content" id="content">
+    <div class="content-wrapper">
+      <h1>Quản lý thuốc</h1>
+      <div class="d-flex mt-4">
+        <a
+          class="btn btn-out btn-primary btn-square mr-5"
+          href="/admin/add-product"
+        >+ Thêm thuốc mới</a>
+      </div>
+      <table class="table table-borderless table-responsive card-1 p-4">
+        <thead>
+          <tr class="border-bottom">
+            <th> <span class="ml-2">Mã</span> </th>
+            <th> <span class="ml-2">Thuốc</span> </th>
+            <th> <span class="ml-2">Hoạt chất</span> </th>
+            <th> <span class="ml-2">Giá</span> </th>
+            <th> <span class="ml-2">Đơn vị tính</span> </th>
+            <th> <span class="ml-2">Nhóm thuốc</span> </th>
+            <th> <span class="ml-4"></span> </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each products}}
+            <tr class="border-bottom" id="product{{id}}">
+              <td>
+                <div class="p-2">
+                  <span class="d-block font-weight-bold">{{id}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="p-2 d-flex flex-row align-items-center mb-2">
+                  <img src="{{imagepath}}" width="40" class="rounded-circle" />
+                  <div class="d-flex flex-column ml-2">
+                    <span class="d-block font-weight-bold">{{name}}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="p-2">
+                  <span>{{ingredient}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="p-2">
+                  <span class="font-weight-bold">{{price}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="p-2">
+                  <span>VND</span>
+                </div>
+              </td>
+              <td>
+                <div class="p-2">
+                  <span class="font-weight-bold">{{Category.name}}</span>
+                </div>
+              </td>
+              <td>
+                <!-- Call to action buttons -->
+                <ul class="list-inline m-0">
+                  <li class="list-inline-item">
+                    <a
+                      class="btn btn-success btn-sm rounded-0"
+                      type="button"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Edit"
+                      href="/admin/edit-product/{{id}}"
+                    ><i class="fa fa-edit"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                    <button
+                      class="btn btn-danger btn-sm rounded-0 delete-btn"
+                      type="button"
+                      data-id={{id}}
+                    ><i class="fa fa-trash"></i></button>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

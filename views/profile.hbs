@@ -1,0 +1,111 @@
+<header class="header bg-white">
+  <div class="container px-0 px-lg-3">
+    <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a
+        class="navbar-brand"
+        href="/"
+      ><span
+          class="font-weight-bold text-uppercase text-dark"
+          id="brand"
+        >HomeMed</span></a>
+      <button
+        class="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      ><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <!-- Link--><a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <!-- Link--><a class="nav-link" href="/products">Shop</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/cart">
+              <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart (<span
+                class="text-dark"
+                id="cart-badge"
+              >{{totalQuantity}}</span>)
+            </a></li>
+          {{#if isLogin}}
+            <li class="nav-item dropdown"><a
+                class="nav-link dropdown-toggle active"
+                id="pagesDropdown"
+                href="#"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user-alt mr-1 text-gray"></i>My profile</a>
+              <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown"><a
+                  class="dropdown-item border-0 transition-link"
+                  href="/profile"
+                >My orders</a><a
+                  class="dropdown-item border-0 transition-link"
+                  href="/logout"
+                >
+                  Logout</a></div>
+            </li>{{else}}
+            <li class="nav-item"><a class="nav-link" href="/login">
+                <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
+        <div class="col-lg-6">
+          <h1 class="h2 text-uppercase mb-0">My profile </h1>
+        </div>
+        <div class="col-lg-6 text-lg-right">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-lg-end mb-0 px-0">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/cart">Cart</a></li>
+              <li class="breadcrumb-item active" aria-current="page">My profile</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="table-responsive" id="profile">
+    <table class="table my-3">
+      <thead>
+        <tr>
+          <th>ID No.</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Receiver</th>
+          <th>Created On</th>
+          <th>Total Price</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each orders}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{address}}</td>
+            <td>{{phone}}</td>
+            <td>{{firstName}} {{lastName}}</td>
+            <td>{{dateFormat createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
+            <td>{{totalPrice}}</td>
+            <td><label
+                class="badge {{StatusOrder.status}}"
+              >{{StatusOrder.status}}</label></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="wrapper">
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>ADMIN</h3>
+      <hr />
+    </div>
+    <ul class="list-unstyled components">
+      <p>MENUS</p>
+      <li> <a href="/admin">Quản lý thuốc</a></li>
+      <li> <a href="/admin/orders">Quản lý đơn hàng</a></li>
+      <li class="active_link">
+        <a href="/admin/users/">Quản lý người dùng</a></li>
+    </ul>
+    <ul class="list-unstyled CTAs">
+      <li> <a href="/logout" class="download">Logout</a> </li>
+    </ul>
+  </nav>
+  <div class="content" id="content">
+    <div class="content-wrapper">
+      <h1>Quản lý người dùng</h1>
+      <table class="table table-borderless table-responsive card-1 p-4">
+        <thead>
+          <tr class="border-bottom">
+            <th> <span class="ml-2">Mã khách hàng</span> </th>
+            <th> <span class="ml-2">Tên đăng nhập</span> </th>
+            <th> <span class="ml-2">Email</span> </th>
+            <th> <span class="ml-2">Ngày tạo</span> </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+            <tr class="border-bottom">
+              <td>
+                <div class="p-2">
+                  <span class="d-block font-weight-bold">{{id}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="p-2">
+                  <span class="d-block font-weight-bold">{{username}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="p-2">
+                  <span class="font-weight-bold">{{email}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="p-2">
+                  <span>{{dateFormat createdAt "MMMM Do YYYY"}}</span>
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

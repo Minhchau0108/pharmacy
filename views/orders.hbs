@@ -1,0 +1,106 @@
+<div class="wrapper">
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>ADMIN</h3>
+      <hr />
+    </div>
+    <ul class="list-unstyled components">
+      <p>MENUS</p>
+      <li> <a href="/admin">Quản lý thuốc</a></li>
+      <li class="active_link"> <a href="/admin/orders">Quản lý đơn hàng</a></li>
+      <li> <a href="/admin/users/">Quản lý người dùng</a></li>
+    </ul>
+    <ul class="list-unstyled CTAs">
+      <li> <a href="/logout" class="download">Logout</a> </li>
+    </ul>
+  </nav>
+  <div class="content" id="content">
+    <div class="content-wrapper">
+      <h1>Quản lý đơn hàng</h1>
+      <table class="table table-borderless table-responsive card-1 p-4">
+        <thead>
+          <tr class="border-bottom">
+            <th> <span>Mã Đơn</span> </th>
+            <th> <span>Mã KH</span> </th>
+            <th> <span>Phone</span> </th>
+            <th> <span>Email</span> </th>
+            <th> <span>Địa chỉ</span> </th>
+            <th> <span>Người nhận</span> </th>
+            <th> <span>Tổng đơn hàng</span> </th>
+            <th> <span>Ngày đặt hàng</span> </th>
+            <th> <span>Tình trạng</span> </th>
+            <th> <span></span> </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each orders}}
+            <tr class="border-bottom">
+              <td>
+                <div>
+                  <span class="d-block font-weight-bold">{{id}}</span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span class="d-block font-weight-bold">{{userId}}</span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span>{{phone}}</span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span>{{User.email}}</span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span>{{address}}</span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span>{{firstName}} {{lastName}}</span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span class="d-block font-weight-bold">{{totalPrice}}
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span class="d-block">{{dateFormat createdAt "MMMM Do YYYY"}}
+                  </span>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <label
+                    class="{{StatusOrder.status}}"
+                    id="status{{id}}"
+                  >{{StatusOrder.status}}</label>
+                </div>
+              </td>
+              <td>
+                <div
+                  class="btn-show-{{StatusOrder.status}}"
+                  id="btn-show-{{id}}"
+                >
+                  <button
+                    class="btn btn-primary btn-sm rounded-0 confirm-order-btn"
+                    type="button"
+                    data-id={{id}}
+                  ><i class="fa fa-check"></i> Xác nhận đơn</button>
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

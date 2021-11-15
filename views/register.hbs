@@ -1,0 +1,170 @@
+<header class="header bg-white">
+  <div class="container px-0 px-lg-3">
+    <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a
+        class="navbar-brand"
+        href="/"
+      ><span
+          class="font-weight-bold text-uppercase text-dark"
+          id="brand"
+        >HomeMed</span></a>
+      <button
+        class="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      ><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <!-- Link--><a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <!-- Link--><a class="nav-link" href="/products">Shop</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/cart">
+              <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart (<span
+                class="text-dark"
+                id="cart-badge"
+              >{{totalQuantity}}</span>)
+            </a></li>
+          {{#if isLogin}}
+            <li class="nav-item dropdown"><a
+                class="nav-link dropdown-toggle"
+                id="pagesDropdown"
+                href="#"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user-alt mr-1 text-gray"></i>My profile</a>
+            <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown"><a
+                class="dropdown-item border-0 transition-link"
+                href="/profile"
+              >My orders</a><a
+                class="dropdown-item border-0 transition-link"
+                href="/logout"
+              >
+                Logout</a></div></li>{{else}}
+            <li class="nav-item"><a class="nav-link active" href="/login">
+                <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <div class="row py-5 mt-4 align-items-center">
+    <!-- For Demo Purpose -->
+    <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+      <img
+        src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg"
+        alt=""
+        class="img-fluid mb-3 d-none d-md-block"
+      />
+      <h1>Create an Account</h1>
+     
+    </div>
+
+    <!-- Registeration Form -->
+    <div class="col-md-7 col-lg-6 ml-auto">
+      <form action="/register" method="POST">
+        <div class="row">
+          {{#each errors}}
+            <div class="alert alert-error col-lg-12">{{msg}}</div>
+          {{/each}}
+          {{#if user}}
+            <div class="alert alert-help col-lg-12">Register successfully.  <a href="/login" class="text-primary ml-2">Click here to login</a></p></div>
+          {{/if}}
+
+          <!-- First Name -->
+          <div class="input-group col-lg-12 mb-4">
+            <div class="input-group-prepend">
+              <span
+                class="input-group-text bg-white px-4 border-md border-right-0"
+              >
+                <i class="fa fa-user text-muted"></i>
+              </span>
+            </div>
+            <input
+              id="username"
+              type="text"
+              name="username"
+              placeholder="Username"
+              class="form-control bg-white border-left-0 border-md"
+            />
+          </div>
+
+        
+
+          <!-- Email Address -->
+          <div class="input-group col-lg-12 mb-4">
+            <div class="input-group-prepend">
+              <span
+                class="input-group-text bg-white px-4 border-md border-right-0"
+              >
+                <i class="fa fa-envelope text-muted"></i>
+              </span>
+            </div>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              class="form-control bg-white border-left-0 border-md"
+            />
+          </div>
+          <!-- Password -->
+          <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+              <span
+                class="input-group-text bg-white px-4 border-md border-right-0"
+              >
+                <i class="fa fa-lock text-muted"></i>
+              </span>
+            </div>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              class="form-control bg-white border-left-0 border-md"
+            />
+          </div>
+
+          <!-- Password Confirmation -->
+          <div class="input-group col-lg-6 mb-4">
+            <div class="input-group-prepend">
+              <span
+                class="input-group-text bg-white px-4 border-md border-right-0"
+              >
+                <i class="fa fa-lock text-muted"></i>
+              </span>
+            </div>
+            <input
+              id="confirmedPassword"
+              type="password"
+              name="confirmedPassword"
+              placeholder="Confirm Password"
+              class="form-control bg-white border-left-0 border-md"
+            />
+          </div>
+          <div class="form-group col-lg-12 mx-auto mb-0">
+           <input type="submit" value="Create your acccount" class="btn btn-primary btn-block py-2"/>
+          </div> 
+
+          <!-- Already Registered -->
+          <div class="text-center w-100 mt-5">
+            <p class="text-muted font-weight-bold">Already Registered?
+              <a href="/login" class="text-primary ml-2">Login</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

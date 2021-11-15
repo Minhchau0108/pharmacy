@@ -1,0 +1,115 @@
+<header class="header bg-white">
+  <div class="container px-0 px-lg-3">
+    <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a
+        class="navbar-brand"
+        href="/"
+      ><span
+          class="font-weight-bold text-uppercase text-dark"
+          id="brand"
+        >HomeMed</span></a>
+      <button
+        class="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      ><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <!-- Link--><a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <!-- Link--><a class="nav-link" href="/products">Shop</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="/cart">
+              <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart (<span
+                class="text-dark"
+                id="cart-badge"
+              >{{totalQuantity}}</span>)
+            </a></li>
+          {{#if isLogin}}
+            <li class="nav-item dropdown"><a
+                class="nav-link dropdown-toggle"
+                id="pagesDropdown"
+                href="#"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user-alt mr-1 text-gray"></i>My profile</a>
+            <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown"><a
+                class="dropdown-item border-0 transition-link"
+                href="/profile"
+              >My orders</a><a
+                class="dropdown-item border-0 transition-link"
+                href="/logout"
+              >
+                Logout</a></div></li>{{else}}
+            <li class="nav-item"><a class="nav-link active" href="/login">
+                <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <div class="row py-5 mt-4 align-items-center">
+    <!-- For Demo Purpose -->
+    <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+      <img
+        src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg"
+        alt=""
+        class="img-fluid mb-3 d-none d-md-block"
+      />
+      <h1>Login</h1>
+
+    </div>
+
+    <!-- Login Form -->
+    <div class="col-md-7 col-lg-6 ml-auto">
+      <form action="/login" method="POST">
+        {{#each errors}}
+          <div class="alert alert-error col-lg-12">{{msg}}</div>
+        {{/each}}
+
+        <div class="form-group mb-3">
+          <input
+            id="username"
+            name="username"
+            type="text"
+            placeholder="Username"
+            required=""
+            autofocus=""
+            class="form-control rounded-pill border-0 shadow-sm px-4"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <input
+            id="pasword"
+            type="password"
+            name="password"
+            placeholder="Password"
+            required=""
+            class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+          />
+        </div>
+        <input
+          type="submit"
+          value="Sign in"
+          class="btn btn-primary btn-block text-uppercase mb-2 mt-5 rounded-pill shadow-sm"
+        ></input>
+        <!-- Not Registered -->
+        <div class="text-center w-100">
+          <p class="text-muted font-weight-bold">Register ?
+            <a href="/register" class="text-primary ml-2">Register</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
